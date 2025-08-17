@@ -10,38 +10,14 @@ Self-organizing knowledge management using Maps of Content (MOCs) and automatic 
 
 **Requirements:** Obsidian + [Dataview plugin](https://github.com/blacksmithgu/obsidian-dataview)
 
-1. Create `MOCs/` folder in vault root
-2. Create your first MOC using the template below
-3. Link notes: Add `MOCs: [[MOCs/Your MOC|Your MOC]]` to any note
-4. Watch notes appear automatically in MOCs
-
-### MOC Template
-
-```markdown
-# Technology MOC
-
-Technology-related notes.
-
-## All Notes
-
-\`\`\`dataview
-LIST
-FROM [[]]
-WHERE !contains(file.path, "_/")
-SORT file.mtime DESC
-\`\`\`
-```
-
-### Note Template
-
-```markdown
-# Note Title
-
-Content here...
-
----
-MOCs: [[MOCs/Technology MOC|Technology]], [[MOCs/Projects MOC|Projects]]
-```
+1. Create `MOCs/` folder in vault root.
+    - This is where all MOCs will be stored.
+    - You can change this in settings if needed.
+2. Create your first MOC and note using the template:
+    - Use [MOC template](./Templates/MOC.md) to create a new MOC.
+    - Use the [note template](./Templates/Note.md) to create a new note.
+    - Ensure the MOC is linked in the note.
+3. Link notes: Add `MOCs: [[MOCs/Example MOC|Optional Alias MOC]]` to any note.
 
 ## Features
 
@@ -53,9 +29,9 @@ MOCs: [[MOCs/Technology MOC|Technology]], [[MOCs/Projects MOC|Projects]]
 
 ## How It Works
 
-1. Notes link to MOCs using standard Obsidian links
-2. MOCs query for backlinks using Dataview
-3. Organization updates automatically
+1. Notes link to MOCs using standard Obsidian links.
+2. MOCs query for backlinks using Dataview.
+3. Organization updates automatically without tags, excessively nested folders, or frontmatter.
 
 ## Documentation
 
@@ -67,63 +43,8 @@ MOCs: [[MOCs/Technology MOC|Technology]], [[MOCs/Projects MOC|Projects]]
 | [Reference](./Docs/Reference.md) | Technical documentation |
 | [Philosophy](./Docs/Philosophy.md) | System principles |
 
-## Examples
-
-### Finding Orphaned Notes
-
-```markdown
-# Orphaned Notes
-
-Notes without MOC links.
-
-\`\`\`dataview
-LIST
-FROM "Notes"
-WHERE !contains(file.content, "MOCs:")
-SORT file.mtime DESC
-\`\`\`
-```
-
-### Multiple Views
-
-```markdown
-# Projects MOC
-
-## Active Projects
-
-\`\`\`dataview
-LIST
-FROM [[]]
-WHERE contains(file.content, "#status/active")
-SORT file.mtime DESC
-\`\`\`
-
-## All Projects
-
-\`\`\`dataview
-TABLE file.mtime as "Modified"
-FROM [[]]
-SORT file.mtime DESC
-\`\`\`
-```
-
-## Support
-
-- [Documentation](./Docs/)
-- [GitHub Issues](https://github.com/yourusername/obsidian-moc-system/issues)
-- [Obsidian Forum](https://forum.obsidian.md)
-- [Discord](https://discord.gg/obsidianmd)
-
-## License
-
-MIT License - see [LICENSE](LICENSE) file.
-
 ## Acknowledgments
 
 - [Nick Milo](https://www.linkingyourthinking.com/) - MOC methodology
 - [Michael Brenan](https://github.com/blacksmithgu) - Dataview plugin
-- Obsidian Community
-
----
-
-**[Get Started →](./Docs/Quickstart.md)**
+- [Obsidian Community]((https://forum.obsidian.md))
